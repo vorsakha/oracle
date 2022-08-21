@@ -5,7 +5,7 @@ import fonts from './fonts';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: typeof colors;
+    colors: typeof colors.light;
     fonts: typeof fonts;
   }
 }

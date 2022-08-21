@@ -1,12 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, { PropsWithChildren, useContext } from 'react';
+import { Button, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import {
   DebugInstructions,
   Header,
@@ -14,47 +7,31 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import styled from 'styled-components/native';
-import { theme } from '../styles/theme';
+import { CustomThemeContext } from '../context/theme';
 
 interface Props extends PropsWithChildren {
   title: string;
 }
 
 function Section({ children, title }: Props) {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <SectionContainer>
-      <SectionTitle color={isDarkMode ? 'white' : 'black'}>
-        {title}
-      </SectionTitle>
-      <SectionDescription color={isDarkMode ? 'white' : 'black'}>
-        {children}
-      </SectionDescription>
+      <SectionTitle>{title}</SectionTitle>
+      <SectionDescription>{children}</SectionDescription>
     </SectionContainer>
   );
 }
 
 function Home() {
-  const isDarkMode = useColorScheme() === 'dark';
+  const { toggleTheme } = useContext(CustomThemeContext);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? theme.colors.black : theme.colors.white,
-  };
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
+    <SafeAreaView>
+      <StatusBar />
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode
-              ? theme.colors.black
-              : theme.colors.white,
-          }}
-        >
+        <Container>
+          <Button title="toggle theme" onPress={toggleTheme} />
           <Section title="Step One">
             Edit <Highlight>App.tsx</Highlight> to change this screen and then
             come back to see your edits.
@@ -69,31 +46,35 @@ function Home() {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
-        </View>
+        </Container>
       </ScrollView>
     </SafeAreaView>
   );
 }
 
-const SectionContainer = styled(SafeAreaView)`
+const Container = styled.View`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+const SectionContainer = styled.SafeAreaView`
   margin-top: 32px;
   padding-horizontal: 24px;
 `;
 
-const SectionTitle = styled(Text)<{ color: 'black' | 'white' }>`
+const SectionTitle = styled.Text`
   font-size: 24px;
   font-weight: 600;
-  color: ${props => props.theme.colors[props.color]};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-const SectionDescription = styled(Text)<{ color: 'black' | 'white' }>`
+const SectionDescription = styled.Text`
   margin-top: 8px;
   font-size: 18px;
   font-weight: 400;
-  color: ${props => props.theme.colors[props.color]};
+  color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-const Highlight = styled(Text)`
+const Highlight = styled.Text`
   font-weight: 700;
 `;
 

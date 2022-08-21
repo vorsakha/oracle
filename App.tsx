@@ -1,13 +1,12 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components/native';
+import { CustomThemeProvider } from './src/context/theme';
 import { Routes } from './src/routes';
-import { theme } from './src/styles/theme';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider>
       <Routes />
-    </ThemeProvider>
+    </CustomThemeProvider>
   );
 }
 

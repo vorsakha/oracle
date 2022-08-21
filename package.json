@@ -12,6 +12,7 @@
     "husky-init": "husky install"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.9",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
     "react": "18.0.0",
