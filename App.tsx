@@ -1,6 +1,8 @@
 import React from 'react';
+import Config from 'react-native-config';
 import { CustomThemeProvider } from './src/context/theme';
 import { Routes } from './src/routes';
+import StorybookUIRoot from './storybook';
 
 function App() {
   return (
@@ -10,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default Config.LOAD_STORYBOOK === 'true' ? StorybookUIRoot : App;
