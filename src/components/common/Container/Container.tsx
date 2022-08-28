@@ -12,7 +12,7 @@ export type ContainerProps = {
 function Container({
   children,
   scroll,
-  position,
+  position = 'relative',
   background,
   flex,
   ...rest
