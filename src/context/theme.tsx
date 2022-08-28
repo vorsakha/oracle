@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { theme, Theme } from '../styles/theme';
@@ -19,18 +19,20 @@ export const CustomThemeContext = createContext<CustomThemeContextProps>(
 export function CustomThemeProvider({ children }: ThemeProviderTypes) {
   const [currentTheme, setCurrentTheme] = useState<Theme>(Theme.light);
 
+  const { getItem, setItem } = useAsyncStorage('@theme');
+
   const toggleTheme = () => {
     setCurrentTheme(currentTheme === Theme.light ? Theme.dark : Theme.light);
   };
 
   const handleCachedTheme = async () => {
-    const cachedTheme = await AsyncStorage.getItem('theme');
+    const cachedTheme = await getItem();
 
-    if (cachedTheme) setCurrentTheme(cachedTheme as Theme);
+    if (cachedTheme !== 'null') setCurrentTheme(cachedTheme as Theme);
   };
 
   useEffect(() => {
-    AsyncStorage.setItem('theme', currentTheme);
+    setItem(currentTheme);
   }, [currentTheme]);
 
   useEffect(() => {
