@@ -9,7 +9,7 @@ import { getPairs } from '../services/pairs';
 
 interface PairsContextProps {
   handleGetPairs: () => Promise<void>;
-  pairs: string[] | null | any;
+  pairs: string[] | null;
   pairsLoading: boolean;
 }
 

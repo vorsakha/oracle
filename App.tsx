@@ -1,5 +1,6 @@
 import React from 'react';
 import Config from 'react-native-config';
+import { MainSignalProvider } from './src/context/mainSignal';
 import { PairsProvider } from './src/context/pairs';
 import { CustomThemeProvider } from './src/context/theme';
 import { Routes } from './src/routes';
@@ -9,7 +10,9 @@ function App() {
   return (
     <CustomThemeProvider>
       <PairsProvider>
-        <Routes />
+        <MainSignalProvider>
+          <Routes />
+        </MainSignalProvider>
       </PairsProvider>
     </CustomThemeProvider>
   );
