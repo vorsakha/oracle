@@ -24,16 +24,9 @@ export function PairsProvider({ children }: PropsWithChildren) {
   const { getItem, setItem } = useAsyncStorage('@pairs');
 
   const handleCache = async () => {
-    setLoading(true);
-    try {
-      const cachedPairs = await getItem();
+    const cachedPairs = await getItem();
 
-      if (cachedPairs) setPairs(JSON.parse(cachedPairs));
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
+    if (cachedPairs) setPairs(JSON.parse(cachedPairs));
   };
 
   const handleGetPairs = async () => {
@@ -48,8 +41,7 @@ export function PairsProvider({ children }: PropsWithChildren) {
       }
 
       setLoading(false);
-    } catch (error) {
-      console.error(error);
+    } catch {
       setLoading(false);
     }
   };

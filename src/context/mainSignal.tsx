@@ -9,6 +9,12 @@ import React, {
 } from 'react';
 import { getMainSignal } from '../services/signal';
 
+export enum Signal {
+  neutral = 0,
+  bullish = 1,
+  bearish = 2,
+}
+
 interface MainSignalContextProps {
   handleGetMainSignal: () => Promise<void>;
   mainSignal: {
@@ -21,21 +27,9 @@ interface MainSignalContextProps {
     }[];
     signal: {
       BTCUSDT: {
-        '4h': {
-          bullish: boolean;
-          bearish: boolean;
-          neutral: boolean;
-        };
-        '1d': {
-          bullish: boolean;
-          bearish: boolean;
-          neutral: boolean;
-        };
-        '1w': {
-          bullish: boolean;
-          bearish: boolean;
-          neutral: boolean;
-        };
+        '4h': number;
+        '1d': number;
+        '1w': number;
       };
     };
   } | null;
@@ -54,16 +48,9 @@ export function MainSignalProvider({ children }: PropsWithChildren) {
   const { getItem, setItem } = useAsyncStorage('@mainSignal');
 
   const handleCache = async () => {
-    setLoading(true);
-    try {
-      const cachedSignal = await getItem();
+    const cachedSignal = await getItem();
 
-      if (cachedSignal) setMainSignal(JSON.parse(cachedSignal));
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
-    }
+    if (cachedSignal) setMainSignal(JSON.parse(cachedSignal));
   };
 
   const handleGetMainSignal = async () => {
@@ -85,17 +72,17 @@ export function MainSignalProvider({ children }: PropsWithChildren) {
         const response = await getMainSignal();
 
         setMainSignal(response.data);
+        AsyncStorage.setItem('@lastRequest', JSON.stringify(new Date()));
       }
 
       setLoading(false);
-    } catch (error) {
-      console.error(error);
+    } catch {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    setItem(JSON.stringify(mainSignal));
+    if (mainSignal) setItem(JSON.stringify(mainSignal));
   }, [mainSignal]);
 
   useEffect(() => {
