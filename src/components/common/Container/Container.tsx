@@ -7,6 +7,7 @@ export type ContainerProps = {
   position?: 'absolute' | 'relative';
   background?: string;
   flex?: number;
+  center?: boolean;
 } & (ViewProps | ScrollViewProps);
 
 function Container({
@@ -14,6 +15,7 @@ function Container({
   scroll,
   position = 'relative',
   background,
+  center,
   flex,
   ...rest
 }: ContainerProps) {
@@ -22,6 +24,7 @@ function Container({
       flex={flex}
       position={position}
       background={background}
+      center={center}
       {...rest}
     >
       {children}
@@ -31,6 +34,7 @@ function Container({
       flex={flex}
       position={position}
       background={background}
+      center={center}
       {...rest}
     >
       {children}

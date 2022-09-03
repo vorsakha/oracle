@@ -9,10 +9,14 @@ export const ContainerView = styled.View<ContainerProps>`
   top: 0;
   height: ${({ position }) => (position === 'absolute' ? '100%' : 'auto')};
   width: ${({ position }) => (position === 'absolute' ? '100%' : 'auto')};
+  justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
+  align-items: ${({ center }) => (center ? 'center' : 'stretch')};
 `;
 
 export const ContainerScrollView = styled.ScrollView<ContainerProps>`
   flex: ${({ flex }) => flex};
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   height: 100%;
+  justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
+  align-items: ${({ center }) => (center ? 'center' : 'stretch')};
 `;

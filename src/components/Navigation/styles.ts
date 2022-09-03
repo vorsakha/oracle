@@ -8,6 +8,7 @@ export const NavigationWrapper = styled.View`
   margin: ${({ theme }) => theme.sizes.sm};
 
   justify-content: center;
+  align-items: center;
   flex-direction: row;
   padding: ${({ theme }) => theme.sizes.md};
 `;

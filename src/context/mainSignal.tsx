@@ -15,24 +15,28 @@ export enum Signal {
   bearish = 2,
 }
 
+export type Signals = {
+  BTCUSDT: {
+    '4h': number;
+    '1d': number;
+    '1w': number;
+  };
+};
+
+export type MainSignalTypes = {
+  coinsData: {
+    coin: string;
+    currentPrice: string;
+    previousDayChange: number;
+    previousMonthChange: number;
+    text: string;
+  }[];
+  signal: Signals;
+} | null;
+
 interface MainSignalContextProps {
   handleGetMainSignal: () => Promise<void>;
-  mainSignal: {
-    coinData: {
-      coin: string;
-      currentPrice: string;
-      previousDayChange: number;
-      previousMonthChange: number;
-      text: string;
-    }[];
-    signal: {
-      BTCUSDT: {
-        '4h': number;
-        '1d': number;
-        '1w': number;
-      };
-    };
-  } | null;
+  mainSignal: MainSignalTypes;
   mainSignalLoading: boolean;
 }
 
@@ -66,17 +70,18 @@ export function MainSignalProvider({ children }: PropsWithChildren) {
       const cachedSignal = await getItem();
 
       if (
-        cachedSignal === 'null' ||
+        !cachedSignal ||
         new Date(JSON.parse(lastRequest as string)) > cacheExpiryTime
       ) {
-        const response = await getMainSignal();
+        const { data } = await getMainSignal();
 
-        setMainSignal(response.data);
+        setMainSignal(data.data);
         AsyncStorage.setItem('@lastRequest', JSON.stringify(new Date()));
       }
 
       setLoading(false);
-    } catch {
+    } catch (e) {
+      console.log(e);
       setLoading(false);
     }
   };
