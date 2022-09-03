@@ -12,6 +12,8 @@ export default {
       _300: '#F9AB55',
       _100: '#E5E059',
     },
+    positive: '#2a9d8f',
+    negative: '#d62828',
   },
   dark: {
     black: '#2d2d2d',
@@ -26,5 +28,7 @@ export default {
       _300: '#F9AB55',
       _100: '#E5E059',
     },
+    positive: '#2a9d8f',
+    negative: '#d62828',
   },
 };
