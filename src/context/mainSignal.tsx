@@ -30,6 +30,7 @@ export type MainSignalTypes = {
     previousDayChange: number;
     previousMonthChange: number;
     text: string;
+    intervalChange: Signals['BTCUSDT'];
   }[];
   signal: Signals;
 } | null;
@@ -80,8 +81,7 @@ export function MainSignalProvider({ children }: PropsWithChildren) {
       }
 
       setLoading(false);
-    } catch (e) {
-      console.log(e);
+    } catch {
       setLoading(false);
     }
   };

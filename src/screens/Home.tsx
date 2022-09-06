@@ -9,18 +9,15 @@ function Home() {
     handleGetMainSignal();
   }, []);
 
-  useEffect(() => {
-    // console.log(mainSignal);
-  }, [mainSignal]);
-
   return (
     <Layout>
       <Pair
         name="BTCUSDT"
-        signal={mainSignal?.signal}
+        signal={mainSignal?.signal.BTCUSDT}
         price={mainSignal?.coinsData[0].currentPrice}
         dayChange={mainSignal?.coinsData[0].previousDayChange}
         monthChange={mainSignal?.coinsData[0].previousMonthChange}
+        intervalChange={mainSignal?.coinsData[0].intervalChange}
       />
     </Layout>
   );
