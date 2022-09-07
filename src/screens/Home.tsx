@@ -11,14 +11,15 @@ function Home() {
 
   return (
     <Layout>
-      <Pair
-        name="BTCUSDT"
-        signal={mainSignal?.signal.BTCUSDT}
-        price={mainSignal?.coinsData[0].currentPrice}
-        dayChange={mainSignal?.coinsData[0].previousDayChange}
-        monthChange={mainSignal?.coinsData[0].previousMonthChange}
-        intervalChange={mainSignal?.coinsData[0].intervalChange}
-      />
+      {!!mainSignal && (
+        <Pair
+          name={mainSignal[0].coin}
+          intervalsData={mainSignal[0].intervalsData}
+          price={mainSignal[0].currentPrice}
+          dayChange={mainSignal[0].previousDayChange}
+          monthChange={mainSignal[0].previousMonthChange}
+        />
+      )}
     </Layout>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Signals } from '../../context/mainSignal';
-import { getSignalString } from '../../util';
+import { intervals, Signals } from '../../context/mainSignal';
+import { getSignalString, getTimeFrameString } from '../../util';
 import Card from '../Card';
 import { Container } from '../common';
 import {
@@ -17,52 +17,34 @@ import {
 
 interface PairProps {
   name: string;
-  signal: Signals['BTCUSDT'] | undefined;
+  intervalsData: Signals | undefined;
   price: string | undefined;
   dayChange: number | undefined;
   monthChange: number | undefined;
-  intervalChange: Signals['BTCUSDT'] | undefined;
 }
 
 function Pair({
   name,
-  signal,
+  intervalsData,
   price,
   dayChange,
   monthChange,
-  intervalChange,
 }: PairProps) {
-  const data = signal
-    ? [
-        {
-          timeframe: 'Short term',
-          signal: getSignalString(signal['4h']),
-          interval: '4h',
-        },
-        {
-          timeframe: 'Medium term',
-          signal: getSignalString(signal['1d']),
-          interval: '1d',
-        },
-        {
-          timeframe: 'Long term',
-          signal: getSignalString(signal['1w']),
-          interval: '1w',
-        },
-      ]
+  const data = intervalsData
+    ? intervals.map(i => ({
+        timeframe: getTimeFrameString(i),
+        signal: getSignalString(intervalsData[i].signal),
+        change: intervalsData[i].change,
+      }))
     : [];
 
   const renderItem = ({ item }) => (
     <Card>
-      <PairName>{item.timeframe}</PairName>
-      <PairSignal>{item.signal}</PairSignal>
+      <PairText>{item.timeframe}</PairText>
+      <PairSignal signal={item.signal}>{item.signal}</PairSignal>
       <PairChangeWrapper>
         <PairText>{item.timeframe} Change:</PairText>
-        <PairChange
-          isPositive={!!intervalChange && intervalChange[item.interval] > 0}
-        >
-          {!!intervalChange && intervalChange[item.interval]}%
-        </PairChange>
+        <PairChange isPositive={item.change > 0}>{item.change}%</PairChange>
       </PairChangeWrapper>
     </Card>
   );

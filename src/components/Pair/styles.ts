@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { NormalizedSignal } from '../../util';
 
 export const PairWrapper = styled.View`
   margin-top: ${({ theme }) => theme.sizes.md};
@@ -9,9 +10,15 @@ export const PairName = styled.Text`
   color: ${({ theme }) => theme.colors.textPrimary};
 `;
 
-export const PairSignal = styled.Text`
-  font-size: 30px;
-  color: ${({ theme }) => theme.colors.textTertiary};
+export const PairSignal = styled.Text<{ isPositive: boolean }>`
+  font-size: 40px;
+  color: ${({ theme, signal }) => {
+    if (signal === NormalizedSignal.NEUTRAL) return theme.colors.textPrimary;
+
+    return theme.colors[
+      signal === NormalizedSignal.BULLISH ? 'positive' : 'negative'
+    ];
+  }};
   margin-bottom: ${({ theme }) => theme.sizes.lg};
 `;
 
