@@ -10,6 +10,7 @@ import {
 } from '../common/Button/styles';
 import { CustomThemeContext } from '../../context/theme';
 import { Theme } from '../../styles/theme';
+import { routes } from '../../routes';
 
 export default function Navigation() {
   const { currentTheme, toggleTheme } = useContext(CustomThemeContext);
@@ -18,8 +19,8 @@ export default function Navigation() {
 
   return (
     <NavigationWrapper>
-      <Button onPress={() => navigate('Home')} icon={<BitcoinIcon />} />
-      <Button icon={<SearchIcon />} />
+      <Button onPress={() => navigate(routes.HOME)} icon={<BitcoinIcon />} />
+      <Button onPress={() => navigate(routes.SEARCH)} icon={<SearchIcon />} />
       <Button
         onPress={toggleTheme}
         icon={currentTheme === Theme.light ? <MoonIcon /> : <SunIcon />}

@@ -1,13 +1,15 @@
 import styled from 'styled-components/native';
 import { NormalizedSignal } from '../../util';
 
-export const PairWrapper = styled.View`
-  margin-top: ${({ theme }) => theme.sizes.md};
+export const PairName = styled.Text`
+  font-size: ${({ theme }) => theme.sizes.lg};
+  color: ${({ theme }) => theme.colors.textPrimary};
+  font-weight: bold;
 `;
 
-export const PairName = styled.Text`
-  font-size: 38px;
-  color: ${({ theme }) => theme.colors.textPrimary};
+export const PairPrice = styled.Text`
+  font-size: 40px;
+  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const PairSignal = styled.Text<{ isPositive: boolean }>`
@@ -20,12 +22,6 @@ export const PairSignal = styled.Text<{ isPositive: boolean }>`
     ];
   }};
   margin-bottom: ${({ theme }) => theme.sizes.lg};
-`;
-
-export const PairPrice = styled.Text`
-  font-size: 35px;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.textSecondary};
 `;
 
 export const PairChangeWrapper = styled.View`
@@ -54,7 +50,7 @@ export const Separator = styled.View`
 `;
 
 export const List = styled.FlatList`
-  margin-top: ${({ theme }) => theme.sizes.md};
+  margin: ${({ theme }) => theme.sizes.md} 0;
 
   min-width: 300px;
   max-height: 220px;

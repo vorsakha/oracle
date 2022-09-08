@@ -12,7 +12,6 @@ import {
   PairSignal,
   PairText,
   Separator,
-  PairWrapper,
 } from './styles';
 
 interface PairProps {
@@ -54,20 +53,18 @@ function Pair({
       <PairName>{name}</PairName>
       <PairPrice>{price}</PairPrice>
 
-      <PairWrapper>
-        <PairChangeWrapper>
-          <PairText>Daily change:</PairText>
-          <PairChange isPositive={!!dayChange && dayChange > 0}>
-            {dayChange}%
-          </PairChange>
-        </PairChangeWrapper>
-        <PairChangeWrapper>
-          <PairText>Monthly change:</PairText>
-          <PairChange isPositive={!!monthChange && monthChange > 0}>
-            {monthChange}%
-          </PairChange>
-        </PairChangeWrapper>
-      </PairWrapper>
+      <PairChangeWrapper>
+        <PairText>Daily change:</PairText>
+        <PairChange isPositive={!!dayChange && dayChange > 0}>
+          {dayChange}%
+        </PairChange>
+      </PairChangeWrapper>
+      <PairChangeWrapper>
+        <PairText>Monthly change:</PairText>
+        <PairChange isPositive={!!monthChange && monthChange > 0}>
+          {monthChange}%
+        </PairChange>
+      </PairChangeWrapper>
 
       <List
         data={data}
