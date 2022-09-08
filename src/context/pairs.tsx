@@ -1,4 +1,6 @@
-import { useAsyncStorage } from '@react-native-async-storage/async-storage';
+import AsyncStorage, {
+  useAsyncStorage,
+} from '@react-native-async-storage/async-storage';
 import React, {
   createContext,
   PropsWithChildren,
@@ -32,12 +34,24 @@ export function PairsProvider({ children }: PropsWithChildren) {
   const handleGetPairs = async () => {
     setLoading(true);
     try {
+      const cacheIntervalInHours = 24;
+      const cacheExpiryTime = new Date();
+      cacheExpiryTime.setHours(
+        cacheExpiryTime.getHours() + cacheIntervalInHours,
+      );
+
+      const lastRequest = await AsyncStorage.getItem('@lastRequest');
+
       const cachedPairs = await getItem();
 
-      if (cachedPairs === 'null') {
+      if (
+        cachedPairs === 'null' ||
+        new Date(JSON.parse(lastRequest as string)) > cacheExpiryTime
+      ) {
         const response = await getPairs();
 
-        setPairs(response.data);
+        setPairs(response.data.data);
+        AsyncStorage.setItem('@lastRequest', JSON.stringify(new Date()));
       }
 
       setLoading(false);

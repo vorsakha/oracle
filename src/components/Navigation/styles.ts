@@ -10,4 +10,5 @@ export const NavigationWrapper = styled.View`
   align-items: center;
   flex-direction: row;
   padding: ${({ theme }) => theme.sizes.md};
+  margin-top: 0;
 `;
