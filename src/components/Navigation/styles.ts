@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const NavigationWrapper = styled.View`
   height: 100px;
   background-color: ${({ theme }) => theme.colors.backgroundSecondary};
-  border-radius: ${({ theme }) => theme.sizes.lg};
+  border-radius: ${({ theme }) => theme.sizes.md};
   margin: ${({ theme }) => theme.sizes.md};
 
   justify-content: center;

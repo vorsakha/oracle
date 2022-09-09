@@ -1,11 +1,6 @@
 import styled from 'styled-components/native';
 
-import Bitcoin from '../../../assets/bitcoin.svg';
-import Search from '../../../assets/search.svg';
-import Sun from '../../../assets/sun.svg';
-import Moon from '../../../assets/moon.svg';
-
-export const ButtonIconWrapper = styled.TouchableOpacity`
+export const ButtonIconContainer = styled.TouchableOpacity`
   flex: 1;
   height: 42px;
   width: 42px;
@@ -13,27 +8,15 @@ export const ButtonIconWrapper = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const BitcoinIcon = styled(Bitcoin)`
-  width: ${({ theme }) => theme.sizes.lg};
-  height: ${({ theme }) => theme.sizes.lg};
-  color: ${({ theme }) => theme.colors.backgroundPrimary};
-  z-index: 20;
+export const ButtonText = styled.Text<{ active: boolean }>`
+  margin-top: 5px;
+  color: ${({ active, theme: { colors } }) =>
+    active ? colors.textPrimary : colors.backgroundPrimary};
 `;
 
-export const SearchIcon = styled(Search)`
+export const Icon = styled.Image<{ active: boolean }>`
   width: ${({ theme }) => theme.sizes.lg};
   height: ${({ theme }) => theme.sizes.lg};
-  color: ${({ theme }) => theme.colors.backgroundPrimary};
-`;
-
-export const SunIcon = styled(Sun)`
-  width: ${({ theme }) => theme.sizes.lg};
-  height: ${({ theme }) => theme.sizes.lg};
-  color: ${({ theme }) => theme.colors.backgroundPrimary};
-`;
-
-export const MoonIcon = styled(Moon)`
-  width: ${({ theme }) => theme.sizes.lg};
-  height: ${({ theme }) => theme.sizes.lg};
-  color: ${({ theme }) => theme.colors.backgroundPrimary};
+  color: ${({ active, theme: { colors } }) =>
+    active ? colors.textPrimary : colors.backgroundPrimary};
 `;
