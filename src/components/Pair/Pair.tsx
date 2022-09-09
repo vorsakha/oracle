@@ -49,7 +49,7 @@ function Pair({
   );
 
   return (
-    <Container>
+    <Container center>
       <PairName>{name}</PairName>
       <PairPrice>{price}</PairPrice>
 

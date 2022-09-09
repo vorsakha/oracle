@@ -10,7 +10,6 @@ export const ContainerView = styled.View<ContainerProps>`
   height: ${({ position }) => (position === 'absolute' ? '100%' : 'auto')};
   width: ${({ position }) => (position === 'absolute' ? '100%' : 'auto')};
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
-  align-items: ${({ center }) => (center ? 'center' : 'stretch')};
 `;
 
 export const ContainerScrollView = styled.ScrollView<ContainerProps>`
@@ -18,5 +17,4 @@ export const ContainerScrollView = styled.ScrollView<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.backgroundPrimary};
   height: 100%;
   justify-content: ${({ center }) => (center ? 'center' : 'flex-start')};
-  align-items: ${({ center }) => (center ? 'center' : 'stretch')};
 `;

@@ -2,9 +2,11 @@ import styled from 'styled-components/native';
 import { NormalizedSignal } from '../../util';
 
 export const PairName = styled.Text`
-  font-size: ${({ theme }) => theme.sizes.lg};
+  font-size: ${({ theme }) => theme.sizes.xl};
   color: ${({ theme }) => theme.colors.textPrimary};
   font-weight: bold;
+
+  margin-bottom: ${({ theme }) => theme.sizes.md};
 `;
 
 export const PairPrice = styled.Text`

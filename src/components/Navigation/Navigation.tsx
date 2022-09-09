@@ -15,6 +15,7 @@ export default function Navigation() {
   const { currentTheme, toggleTheme } = useContext(CustomThemeContext);
 
   const { navigate } = useNavigation();
+
   const { name } = useRoute();
 
   return (
