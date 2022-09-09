@@ -11,9 +11,14 @@ function StoryNavigator(story: any) {
     <NavigationContainer independent>
       <StoryBookStack.Navigator>
         <StoryBookStack.Screen
-          name="MyStorybookScreen"
+          name="Home"
           component={Screen}
-          options={{ header: () => null }}
+          options={{ header: () => null, animation: 'none' }}
+        />
+        <StoryBookStack.Screen
+          name="Search"
+          component={Screen}
+          options={{ header: () => null, animation: 'none' }}
         />
       </StoryBookStack.Navigator>
     </NavigationContainer>
