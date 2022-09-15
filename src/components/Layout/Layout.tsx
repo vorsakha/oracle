@@ -4,6 +4,7 @@ import { MainSignalContext } from '../../context/mainSignal';
 import { PairsContext } from '../../context/pairs';
 import { SignalContext } from '../../context/signal';
 import { Container, Loading } from '../common';
+import Header from '../Header';
 import { ContainerWrapper, LayoutContainer } from './styles';
 
 function Layout({ children }: PropsWithChildren) {
@@ -17,10 +18,9 @@ function Layout({ children }: PropsWithChildren) {
     <LayoutContainer>
       <StatusBar />
 
-      <Container flex={8}>
-        <ContainerWrapper flex={6}>
-          {loading ? <Loading /> : children}
-        </ContainerWrapper>
+      <Container>
+        <Header />
+        <ContainerWrapper>{loading ? <Loading /> : children}</ContainerWrapper>
       </Container>
     </LayoutContainer>
   );
