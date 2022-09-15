@@ -1,5 +1,6 @@
 import React from 'react';
 import Config from 'react-native-config';
+import { LayoutContainer } from './src/components/Layout/styles';
 import { MainSignalProvider } from './src/context/mainSignal';
 import { PairsProvider } from './src/context/pairs';
 import { SignalProvider } from './src/context/signal';
@@ -13,7 +14,9 @@ function App() {
       <PairsProvider>
         <MainSignalProvider>
           <SignalProvider>
-            <Routes />
+            <LayoutContainer>
+              <Routes />
+            </LayoutContainer>
           </SignalProvider>
         </MainSignalProvider>
       </PairsProvider>
