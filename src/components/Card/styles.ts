@@ -14,5 +14,6 @@ export const CardContainer = styled.View`
   align-items: flex-start;
 
   padding: ${({ theme: { sizes } }) => sizes.md};
+  margin: ${({ theme: { sizes } }) => sizes.sm} 0;
 `;
 export const CardWrapper = styled.View``;

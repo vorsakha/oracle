@@ -1,6 +1,7 @@
 import React from 'react';
 import Config from 'react-native-config';
 import { LayoutContainer } from './src/components/Layout/styles';
+import { FavoritesProvider } from './src/context/favorites';
 import { MainSignalProvider } from './src/context/mainSignal';
 import { PairsProvider } from './src/context/pairs';
 import { SignalProvider } from './src/context/signal';
@@ -14,9 +15,11 @@ function App() {
       <PairsProvider>
         <MainSignalProvider>
           <SignalProvider>
-            <LayoutContainer>
-              <Routes />
-            </LayoutContainer>
+            <FavoritesProvider>
+              <LayoutContainer>
+                <Routes />
+              </LayoutContainer>
+            </FavoritesProvider>
           </SignalProvider>
         </MainSignalProvider>
       </PairsProvider>

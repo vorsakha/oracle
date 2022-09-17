@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Container } from '../common';
 import {
   ItemText,
@@ -12,29 +12,47 @@ import {
 import { routes } from '../../routes';
 
 interface PairProps {
-  items: string[];
+  items: string[] | null;
+  title?: string;
+  description?: string;
 }
 
-function Pair({ items }: PairProps) {
-  const { navigate } = useNavigation();
+function Pair({
+  items,
+  title = 'Pairs',
+  description = 'All possible pairs',
+}: PairProps) {
+  const { navigate, setParams } = useNavigation();
+
+  const { name } = useRoute();
+
+  const handleParams = item => {
+    if (name === routes.SIGNAL) {
+      return setParams({ pair: item });
+    }
+
+    return navigate(routes.SIGNAL, { pair: item });
+  };
 
   const renderItem = ({ item }) => (
-    <ItemWrapper onPress={() => navigate(routes.SIGNAL, { pair: item })}>
+    <ItemWrapper onPress={() => handleParams(item)}>
       <ItemText>{item}</ItemText>
     </ItemWrapper>
   );
 
   return (
     <Container>
-      <PairText>Pairs</PairText>
-      <PairDescription>All possible pairs</PairDescription>
+      <PairText>{title}</PairText>
+      <PairDescription>{description}</PairDescription>
 
-      <List
-        data={items}
-        ItemSeparatorComponent={Separator}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-      />
+      {!!items && (
+        <List
+          data={items}
+          ItemSeparatorComponent={Separator}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
     </Container>
   );
 }

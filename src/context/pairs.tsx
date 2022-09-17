@@ -40,7 +40,7 @@ export function PairsProvider({ children }: PropsWithChildren) {
         cacheExpiryTime.getHours() + cacheIntervalInHours,
       );
 
-      const lastRequest = await AsyncStorage.getItem('@lastRequest');
+      const lastRequest = await AsyncStorage.getItem('@lastRequestPairs');
 
       const cachedPairs = await getItem();
 
@@ -51,7 +51,7 @@ export function PairsProvider({ children }: PropsWithChildren) {
         const response = await getPairs();
 
         setPairs(response.data.data);
-        AsyncStorage.setItem('@lastRequest', JSON.stringify(new Date()));
+        AsyncStorage.setItem('@lastRequestPairs', JSON.stringify(new Date()));
       }
 
       setLoading(false);

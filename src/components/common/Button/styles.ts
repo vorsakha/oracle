@@ -13,10 +13,3 @@ export const ButtonText = styled.Text<{ active: boolean }>`
   color: ${({ active, theme: { colors } }) =>
     active ? colors.textPrimary : colors.backgroundPrimary};
 `;
-
-export const Icon = styled.Image<{ active: boolean }>`
-  width: ${({ theme }) => theme.sizes.lg};
-  height: ${({ theme }) => theme.sizes.lg};
-  color: ${({ active, theme: { colors } }) =>
-    active ? colors.textPrimary : colors.backgroundPrimary};
-`;

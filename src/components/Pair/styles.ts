@@ -52,8 +52,6 @@ export const Separator = styled.View`
 `;
 
 export const List = styled.FlatList`
-  margin: ${({ theme }) => theme.sizes.md} 0;
-
   min-width: 300px;
   max-height: 220px;
 `;
