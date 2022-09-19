@@ -17,23 +17,24 @@ export const CustomThemeContext = createContext<CustomThemeContextProps>(
 );
 
 export function CustomThemeProvider({ children }: ThemeProviderTypes) {
-  const [currentTheme, setCurrentTheme] = useState<Theme>(Theme.light);
+  const [currentTheme, setCurrentTheme] = useState<Theme>(Theme.dark);
 
   const { getItem, setItem } = useAsyncStorage('@theme');
 
-  const toggleTheme = () => {
-    setCurrentTheme(currentTheme === Theme.light ? Theme.dark : Theme.light);
+  const toggleTheme = async () => {
+    const newTheme = currentTheme === Theme.light ? Theme.dark : Theme.light;
+
+    await setItem(newTheme);
+
+    setCurrentTheme(newTheme);
   };
 
   const handleCachedTheme = async () => {
     const cachedTheme = await getItem();
+    console.log(cachedTheme);
 
     if (cachedTheme !== 'null') setCurrentTheme(cachedTheme as Theme);
   };
-
-  useEffect(() => {
-    setItem(currentTheme);
-  }, [currentTheme]);
 
   useEffect(() => {
     handleCachedTheme();
