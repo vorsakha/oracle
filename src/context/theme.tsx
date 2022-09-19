@@ -31,7 +31,6 @@ export function CustomThemeProvider({ children }: ThemeProviderTypes) {
 
   const handleCachedTheme = async () => {
     const cachedTheme = await getItem();
-    console.log(cachedTheme);
 
     if (cachedTheme !== 'null') setCurrentTheme(cachedTheme as Theme);
   };
