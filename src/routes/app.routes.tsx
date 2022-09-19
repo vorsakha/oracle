@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import SignalScreen from '../screens/SignalScreen';
-import { routes } from '.';
 
 import Favorites from '../screens/Favorites';
 import { Navigation } from '../components';
+import { routes } from '../constants';
 
 const Tab = createBottomTabNavigator();
 

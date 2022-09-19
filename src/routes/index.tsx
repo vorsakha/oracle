@@ -2,13 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { AppRoutes } from './app.routes';
 
-export enum routes {
-  HOME = 'Home',
-  SEARCH = 'Search',
-  SIGNAL = 'Signal',
-  FAVORITES = 'Favorites',
-}
-
 declare global {
   namespace ReactNavigation {
     interface RootParamList {

@@ -1,8 +1,9 @@
 import { RouteProp, useRoute } from '@react-navigation/native';
 import React, { useContext, useEffect } from 'react';
 import { Layout, Pair } from '../components';
+import { routes } from '../constants';
 import { SignalContext } from '../context/signal';
-import { ParamList, routes } from '../routes';
+import { ParamList } from '../routes';
 
 function SignalScreen() {
   const {

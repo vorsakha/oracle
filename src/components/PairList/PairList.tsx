@@ -9,7 +9,7 @@ import {
   PairText,
   Separator,
 } from './styles';
-import { routes } from '../../routes';
+import { routes } from '../../constants';
 
 interface PairProps {
   items: string[] | null;

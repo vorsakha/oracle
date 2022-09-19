@@ -10,8 +10,9 @@ import Sun from '../../assets/sunny-outline.svg';
 import Moon from '../../assets/moon-outline.svg';
 import BookmarkOutline from '../../assets/bookmark-outline.svg';
 import Bookmark from '../../assets/bookmark.svg';
-import { ParamList, routes } from '../../routes';
+import { ParamList } from '../../routes';
 import { FavoritesContext } from '../../context/favorites';
+import { routes } from '../../constants';
 
 export default function Navigation() {
   const { currentTheme, toggleTheme } = useContext(CustomThemeContext);

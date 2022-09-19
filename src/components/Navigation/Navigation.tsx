@@ -6,7 +6,7 @@ import { Icon, Text } from '../common';
 import BookmarksIcon from '../../assets/bookmarks-outline.svg';
 import BitcoinIcon from '../../assets/logo-bitcoin.svg';
 import SearchIcon from '../../assets/search-outline.svg';
-import { routes } from '../../routes';
+import { routes } from '../../constants';
 
 const Tab = createBottomTabNavigator();
 
