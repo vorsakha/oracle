@@ -1,11 +1,32 @@
-## Issues
+<h1 align="center">ORACLE</h1>
 
-### (linux users) If you end up with the "SDK location not found" issue
+## 🚀 Tech Stack
+
+- React Native CLI
+- TypeScript
+- styled-components
+- eslint
+- Husky
+- Storybook
+
+## ✔️ About
+
+Oracle goes through crypto market history to get a glance at the current conditions, depending on specific time frames.
+
+## ✔️ Install
+
+```
+yarn install
+yarn husky-init
+```
+
+## Possible build Issues
+
+### (Android for linux users) If you end up with the "SDK location not found" issue
 Create a local.properties file at the android folder and paste this:
 ```
-sdk.dir = /home/USER/Android/Sdk
+sdk.dir = /home/$USER/Android/Sdk
 ```
-"USER" being you machine username
 
 
 ### 'cz' is not a git command.

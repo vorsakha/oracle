@@ -1,6 +1,6 @@
 import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
-import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { DefaultTheme, ThemeProvider } from 'styled-components/native';
 import { theme, Theme } from '../styles/theme';
 
 interface CustomThemeContextProps {
