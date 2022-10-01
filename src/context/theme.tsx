@@ -32,7 +32,7 @@ export function CustomThemeProvider({ children }: ThemeProviderTypes) {
   const handleCachedTheme = async () => {
     const cachedTheme = await getItem();
 
-    if (cachedTheme !== 'null') setCurrentTheme(cachedTheme as Theme);
+    if (cachedTheme !== null) setCurrentTheme(cachedTheme as Theme);
   };
 
   useEffect(() => {
