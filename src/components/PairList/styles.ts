@@ -11,10 +11,13 @@ export const List = styled.FlatList`
 export const PairText = styled.Text`
   font-size: ${({ theme }) => theme.sizes.lg};
   color: ${({ theme }) => theme.colors.textPrimary};
+  font-family: ${({ theme }) => theme.fonts.primaryBold};
 `;
 export const PairDescription = styled.Text`
+  margin: ${({ theme }) => theme.sizes.xs} 0;
   font-size: ${({ theme }) => theme.sizes.md};
   color: ${({ theme }) => theme.colors.textPrimary};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;
 export const ItemWrapper = styled.TouchableOpacity`
   padding: ${({ theme }) => theme.sizes.md};
@@ -25,4 +28,5 @@ export const ItemText = styled.Text`
   font-size: 20px;
   text-align: center;
   color: ${({ theme }) => theme.colors.textTertiary};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;

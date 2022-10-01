@@ -12,4 +12,5 @@ export const ButtonText = styled.Text<{ active: boolean }>`
   margin-top: 5px;
   color: ${({ active, theme: { colors } }) =>
     active ? colors.textPrimary : colors.backgroundPrimary};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;

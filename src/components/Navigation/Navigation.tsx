@@ -3,15 +3,15 @@ import { useTheme } from 'styled-components';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon, Text } from '../common';
 
-import BookmarksIcon from '../../assets/bookmarks-outline.svg';
-import BitcoinIcon from '../../assets/logo-bitcoin.svg';
-import SearchIcon from '../../assets/search-outline.svg';
+import BookmarksIcon from '../../assets/images/bookmarks-outline.svg';
+import BitcoinIcon from '../../assets/images/logo-bitcoin.svg';
+import SearchIcon from '../../assets/images/search-outline.svg';
 import { routes } from '../../constants';
 
 const Tab = createBottomTabNavigator();
 
 function Navigation({ children }: PropsWithChildren) {
-  const { colors } = useTheme();
+  const { colors, fonts } = useTheme();
 
   const tabBarIcon = (focused: boolean, route: { name: string }) => {
     if (route.name === routes.FAVORITES) {
@@ -35,6 +35,7 @@ function Navigation({ children }: PropsWithChildren) {
       margin: 24,
       padding: 0,
       borderRadius: 24,
+      fontFamily: fonts.primaryBold,
     },
     tabBarItemStyle: {},
     tabBarLabel: ({ focused }) => tabBarLabel(focused, route),
@@ -47,6 +48,7 @@ function Navigation({ children }: PropsWithChildren) {
     tabBarIcon: ({ focused }) => tabBarIcon(focused, route),
     headerShown: false,
   });
+
   return (
     <Tab.Navigator
       screenOptions={screenOptions}

@@ -4,14 +4,15 @@ import { NormalizedSignal } from '../../util';
 export const PairName = styled.Text`
   font-size: ${({ theme }) => theme.sizes.xl};
   color: ${({ theme }) => theme.colors.textPrimary};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.fonts.primaryBlack};
 
-  margin-bottom: ${({ theme }) => theme.sizes.md};
+  margin-bottom: ${({ theme }) => theme.sizes.sm};
 `;
 
 export const PairPrice = styled.Text`
   font-size: 40px;
   color: ${({ theme }) => theme.colors.textSecondary};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;
 
 export const PairSignal = styled.Text<{ isPositive: boolean }>`
@@ -23,6 +24,7 @@ export const PairSignal = styled.Text<{ isPositive: boolean }>`
       signal === NormalizedSignal.BULLISH ? 'positive' : 'negative'
     ];
   }};
+  font-family: ${({ theme }) => theme.fonts.primaryBlack};
   margin-bottom: ${({ theme }) => theme.sizes.lg};
 `;
 
@@ -34,17 +36,18 @@ export const PairChangeWrapper = styled.View`
 
 export const PairText = styled.Text`
   font-size: 20px;
-  margin: ${({ theme }) => theme.sizes.xs} 0;
+  margin: ${({ theme }) => theme.sizes.sm} 0;
   color: ${({ theme }) => theme.colors.textPrimary};
+  font-family: ${({ theme }) => theme.fonts.primary};
 `;
 
 export const PairChange = styled.Text<{ isPositive: boolean }>`
   font-size: 30px;
-  font-weight: bold;
   color: ${({ theme, isPositive }) =>
     theme.colors[isPositive ? 'positive' : 'negative']};
   align-self: center;
-  margin-left: ${({ theme }) => theme.sizes.xs};
+  margin-left: ${({ theme }) => theme.sizes.sm};
+  font-family: ${({ theme }) => theme.fonts.primaryBold};
 `;
 
 export const Separator = styled.View`

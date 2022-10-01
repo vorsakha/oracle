@@ -1,4 +1,5 @@
 export default {
-  primary: '',
-  secondary: '',
+  primary: 'Lato-Regular',
+  primaryBold: 'Lato-Bold',
+  primaryBlack: 'Lato-Black',
 };
