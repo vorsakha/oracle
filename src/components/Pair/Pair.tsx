@@ -50,23 +50,30 @@ function Pair({
 
   return (
     <Container center>
-      <PairName>{name}</PairName>
-      <PairPrice>{price}</PairPrice>
+      <PairName testID="pair">{name}</PairName>
+      <PairPrice testID="price">{price}</PairPrice>
 
       <PairChangeWrapper>
         <PairText>Daily change:</PairText>
-        <PairChange isPositive={!!dayChange && dayChange > 0}>
+        <PairChange
+          testID="day-change"
+          isPositive={!!dayChange && dayChange > 0}
+        >
           {dayChange}%
         </PairChange>
       </PairChangeWrapper>
       <PairChangeWrapper>
         <PairText>Monthly change:</PairText>
-        <PairChange isPositive={!!monthChange && monthChange > 0}>
+        <PairChange
+          testID="month-change"
+          isPositive={!!monthChange && monthChange > 0}
+        >
           {monthChange}%
         </PairChange>
       </PairChangeWrapper>
 
       <List
+        testID="signal-list"
         data={data}
         ItemSeparatorComponent={Separator}
         showsVerticalScrollIndicator={false}

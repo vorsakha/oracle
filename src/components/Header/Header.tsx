@@ -31,6 +31,7 @@ export default function Navigation() {
             icon={favorites?.includes(params.pair) ? Bookmark : BookmarkOutline}
             active
             size="small"
+            testID="favorite-btn"
           />
         )}
       </View>

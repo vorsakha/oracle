@@ -35,7 +35,7 @@ function Pair({
   };
 
   const renderItem = ({ item }) => (
-    <ItemWrapper onPress={() => handleParams(item)}>
+    <ItemWrapper testID={`${item}-test`} onPress={() => handleParams(item)}>
       <ItemText>{item}</ItemText>
     </ItemWrapper>
   );

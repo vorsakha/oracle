@@ -47,6 +47,7 @@ function Navigation({ children }: PropsWithChildren) {
     },
     tabBarIcon: ({ focused }) => tabBarIcon(focused, route),
     headerShown: false,
+    tabBarTestID: `${route.name}-tab`,
   });
 
   return (
