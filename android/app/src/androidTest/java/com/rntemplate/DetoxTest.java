@@ -1,4 +1,4 @@
-package com.rntemplate; // Change projects name.
+package com.oracle; // Change projects name.
 
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;
