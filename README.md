@@ -8,6 +8,7 @@
 - eslint
 - Husky
 - Storybook
+- Detox
 
 ## ✔️ About
 
